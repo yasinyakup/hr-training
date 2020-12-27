@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "hr-training"
+  "defaultProject": "hr-training",
+  "cli": {
+    "analytics": "73d07f7c-5518-49bd-90b8-47f7a7fe1f6f"
+  }
 }
