@@ -1,1 +1,55 @@
-<p>header works!</p>
+<mat-toolbar color="primary">
+<mat-toolbar-row>
+<button mat-icon-button>
+    <mat-icon>menu</mat-icon>
+</button>
+
+<span>APP LOGO</span>
+
+<div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+    <ul fxLayout="row" fxLayoutGap="20px">
+        <li>
+            <button mat-icon-button>
+                <mat-icon>settings</mat-icon>
+            </button>
+        </li>
+        <li>
+            <button mat-icon-button>
+                <mat-icon>help online</mat-icon>
+            </button>
+        </li>
+        <li>
+            <button mat-icon-button [matMenuTriggerFor]="person_menu" aria-label="Example icon-button with a menu">
+                <mat-icon>person outline</mat-icon>
+              </button>
+              <mat-menu #person_menu="matMenu">
+                <button mat-menu-item>
+                  <mat-icon>exit_to_app</mat-icon>
+                  <span>Sign Out</span>
+                </button>
+              </mat-menu>
+        </li>
+        <li>
+            <button mat-icon-button [matMenuTriggerFor]="more_menu" aria-label="Example icon-button with a menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #more_menu="matMenu">
+                <button mat-menu-item>
+                  <mat-icon>dialpad</mat-icon>
+                  <span>Redial</span>
+                </button>
+                <button mat-menu-item disabled>
+                  <mat-icon>voicemail</mat-icon>
+                  <span>Check voice mail</span>
+                </button>
+                <button mat-menu-item>
+                  <mat-icon>notifications_off</mat-icon>
+                  <span>Disable alerts</span>
+                </button>
+              </mat-menu>
+        </li>
+    </ul>
+</div>
+
+</mat-toolbar-row>
+</mat-toolbar>
