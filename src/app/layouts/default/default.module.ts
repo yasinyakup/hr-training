@@ -9,6 +9,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { PostsComponent } from 'src/app/modules/posts/posts.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider'
+import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatCardModule} from '@angular/material/card'
+import { DashboardService } from 'src/app/modules/dashboard.service';
 
 
 @NgModule({
@@ -22,8 +25,12 @@ import { MatDividerModule } from '@angular/material/divider'
   RouterModule,
   SharedModule,
   MatSidenavModule,
-  MatDividerModule
-
+  MatDividerModule,
+  FlexLayoutModule,
+  MatCardModule
+  ],
+  providers:[
+    DashboardService
   ]
 })
 export class DefaultModule { }

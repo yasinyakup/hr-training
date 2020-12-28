@@ -1,18 +1,32 @@
 <div>
-    <app-areachart></app-areachart>
+    <app-areachart [data]="bigChart"></app-areachart>
 </div>
+<br>
 <mat-divider></mat-divider>
+<br>
 
-<div>
-    <div>Line Chart</div>
-    <div>Line Chart</div>
-    <div>Line Chart</div>
-    <div>Line Chart</div>
+<div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="state-cards">
+   <mat-card fxFlex="25">
+    <app-widgetcard label= "Users" total="20" percentage="35" [data]="smallChart"></app-widgetcard>
+   </mat-card>
+   <mat-card fxFlex="25">
+    <app-widgetcard label= "Engineers" total="35" percentage="55" [data]="smallChart"></app-widgetcard>
+    </mat-card>
+    <mat-card fxFlex="25">
+    <app-widgetcard label= "Workers" total="10" percentage="75" [data]="smallChart"></app-widgetcard>
+    </mat-card>
+    <mat-card fxFlex="25">
+    <app-widgetcard label= "Administration" total="7" percentage="25" [data]="smallChart"></app-widgetcard>
+    </mat-card>
 </div>
 
+<br>
 <mat-divider></mat-divider>
+<br>
 
-<div>
-    <div>Table</div>
-    <div>Pie Chart</div>
+<div fcLayout="row" fxLayoutAlign="space-between center" fxLayout="20px">
+    <div fxFlex="60">Table</div>
+    <div fxFlex="40">
+        <app-widgetpie [data]="pieChart"></app-widgetpie>
+    </div>
 </div>
