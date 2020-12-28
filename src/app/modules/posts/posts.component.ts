@@ -21,7 +21,7 @@ export class PostsComponent implements OnInit {
 
  dataSource: MatTableDataSource<IUser>;
   users: IUser[];
-  displayColumns: String[]=['id','name', 'age', 'title', 'hireDate', 'dept'];
+  displayedColumns: String[]=['id','name', 'age', 'title', 'hireDate', 'dept'];
   constructor() { 
     this.users = [
       {
@@ -50,7 +50,7 @@ export class PostsComponent implements OnInit {
       }
     ];
 
-this.dataSource = new MatTableDataSource(this.users);
+this.dataSource = new MatTableDataSource<IUser>(this.users);
   }
 
   ngOnInit(): void {
