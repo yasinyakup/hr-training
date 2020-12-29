@@ -17,6 +17,9 @@ import {MatTableModule} from '@angular/material/table'
 import { MatSortModule } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 @NgModule({
@@ -37,7 +40,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
   MatPaginatorModule,
   MatSortModule,
   MatInputModule,
-  MatFormFieldModule
+  MatFormFieldModule,
+  MatIconModule,
+  MatButtonModule,
+  MatMenuModule
+
   ],
   providers:[
     DashboardService

@@ -24,9 +24,10 @@ export class PostsComponent implements OnInit {
 
  dataSource: MatTableDataSource<IUser>;
   users: IUser[];
-  displayedColumns: String[]=['id','name', 'age', 'title', 'hireDate', 'dept'];
+  displayedColumns: String[]=['id','name', 'age', 'title', 'hireDate', 'dept', 'actions'];
   @ViewChild(MatSort, { static: true })  sort: MatSort = new MatSort;
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: true })
+  paginator!: MatPaginator;
 
   constructor() { 
     this.users = [
@@ -88,9 +89,8 @@ this.dataSource = new MatTableDataSource<IUser>(this.users);
     this.dataSource.paginator = this.paginator;
   }
 
-   WithoutTime(dateTime: Date) {
-    var date = new Date(dateTime.getTime());
-    date.setHours(0, 0, 0, 0);
-    return date;
-}
+   applyFilter(event: any){
+      const userFilterValue = (event.target as HTMLInputElement).value;
+      this.dataSource.filter = userFilterValue.trim().toLocaleLowerCase();
+   }
 }
