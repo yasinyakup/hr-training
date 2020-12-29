@@ -5,14 +5,13 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
 interface IUser {
-  id: string;
-  name: string;
-  age: number;
-  title: string;
-  hireDate: string;
+  empNo: string;
+  fullname: string;
   dept: string;
-
-
+  title: string;
+  trainingName: string;
+  archiveNo: string;
+  hour: number;
 }
 
 @Component({
@@ -24,7 +23,7 @@ export class PostsComponent implements OnInit {
 
  dataSource: MatTableDataSource<IUser>;
   users: IUser[];
-  displayedColumns: String[]=['id','name', 'age', 'title', 'hireDate', 'dept', 'actions'];
+  displayedColumns: String[]=['id','empNo', 'fullname', 'dept', 'title', 'trainingName', 'archiveNo', 'hour',  'actions'];
   @ViewChild(MatSort, { static: true })  sort: MatSort = new MatSort;
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
@@ -32,53 +31,55 @@ export class PostsComponent implements OnInit {
   constructor() { 
     this.users = [
       {
-        id:'1',
-        name: 'yasin yakup',
-        age: 36,
-        title:'engineer',
-        hireDate: '2020-01-15', 
-        dept: "IT"
+        empNo: '99949270278',
+        fullname: 'Yasin Yakup',
+        dept: 'Bilgi İşlem',
+        title: 'Mes Mühendisi',
+        trainingName: 'MES Eğitimleri',
+        archiveNo: 'CME301100802',
+        hour: 2.5
       },
       {
-        id:'2',
-        name: 'malih yayla',
-        age: 27,
-        title:'engineer',
-        hireDate: '2020-03-15',
-        dept: "IT"
+        empNo: '99949270278',
+        fullname: 'Yasin Yakup',
+        dept: 'Bilgi İşlem',
+        title: 'Mes Mühendisi',
+        trainingName: 'MES Eğitimleri',
+        archiveNo: 'CME301100802',
+        hour: 2.5
+      },{
+        empNo: '99949270278',
+        fullname: 'Yasin Yakup',
+        dept: 'Bilgi İşlem',
+        title: 'Mes Mühendisi',
+        trainingName: 'MES Eğitimleri',
+        archiveNo: 'CME301100802',
+        hour: 2.5
+      },{
+        empNo: '99949270278',
+        fullname: 'Yasin Yakup',
+        dept: 'Bilgi İşlem',
+        title: 'Mes Mühendisi',
+        trainingName: 'MES Eğitimleri',
+        archiveNo: 'CME301100802',
+        hour: 2.5
+      },{
+        empNo: '99949270278',
+        fullname: 'Yasin Yakup',
+        dept: 'Bilgi İşlem',
+        title: 'Mes Mühendisi',
+        trainingName: 'MES Eğitimleri',
+        archiveNo: 'CME301100802',
+        hour: 2.5
+      },{
+        empNo: '99949270278',
+        fullname: 'Yasin Yakup',
+        dept: 'Bilgi İşlem',
+        title: 'Mes Mühendisi',
+        trainingName: 'MES Eğitimleri',
+        archiveNo: 'CME301100802',
+        hour: 2.5
       },
-      {
-        id:'3',
-        name: 'bilal abdurahman',
-        age: 30,
-        title:'engineer',
-        hireDate: '2020-09-05',
-        dept: "IT"
-      },
-      {
-        id:'4',
-        name: 'bilal abdurahman',
-        age: 30,
-        title:'engineer',
-        hireDate: '2020-09-05',
-        dept: "IT"
-      },
-      {
-        id:'5',
-        name: 'bilal abdurahman',
-        age: 30,
-        title:'engineer',
-        hireDate: '2020-09-05',
-        dept: "IT"
-      },
-      {
-        id:'6',
-        name: 'bilal abdurahman',
-        age: 30,
-        title:'engineer',
-        hireDate: '2020-09-05',
-        dept: "IT"
-      }
     ];
 
 this.dataSource = new MatTableDataSource<IUser>(this.users);
