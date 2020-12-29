@@ -14,6 +14,9 @@ import {MatCardModule} from '@angular/material/card'
 import { DashboardService } from 'src/app/modules/dashboard.service';
 import {MatPaginatorModule} from '@angular/material/paginator'
 import {MatTableModule} from '@angular/material/table'
+import { MatSortModule } from '@angular/material/sort';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 @NgModule({
@@ -31,7 +34,10 @@ import {MatTableModule} from '@angular/material/table'
   FlexLayoutModule,
   MatCardModule,
   MatTableModule,
-  MatPaginatorModule
+  MatPaginatorModule,
+  MatSortModule,
+  MatInputModule,
+  MatFormFieldModule
   ],
   providers:[
     DashboardService
