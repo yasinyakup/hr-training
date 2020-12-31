@@ -20,13 +20,17 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
+import { UserComponent } from 'src/app/modules/user/user.component';
+import { EmployeeComponent } from 'src/app/modules/employee/employee.component';
 
 
 @NgModule({
   declarations: [
     DefaultComponent,
     DashboardComponent,
-    PostsComponent
+    PostsComponent,
+    UserComponent,
+    EmployeeComponent
   ],
   imports: [
   CommonModule,

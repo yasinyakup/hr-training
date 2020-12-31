@@ -15,6 +15,10 @@ import { AreachartComponent } from './widgets/areachart/areachart.component';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { CardComponent } from './widgets/card/card.component';
 import { PieComponent } from './widgets/pie/pie.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ObserversModule } from '@angular/cdk/observers';
+import { EmployeeService } from './service/employee.service';
+import { MatTableModule } from '@angular/material/table';
 
 
 
@@ -38,6 +42,9 @@ import { PieComponent } from './widgets/pie/pie.component';
     MatListModule,
     RouterModule,
     HighchartsChartModule,
+    HttpClientModule,
+    ObserversModule,
+    MatTableModule
     
   ],
   exports:[
@@ -47,6 +54,9 @@ import { PieComponent } from './widgets/pie/pie.component';
     AreachartComponent,
     CardComponent,
     PieComponent
+  ],
+  providers:[
+    EmployeeService
   ]
 })
 export class SharedModule { }

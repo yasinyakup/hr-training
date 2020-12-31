@@ -8,10 +8,14 @@ import { DefaultModule } from './layouts/default/default.module';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { SharedModule } from './shared/shared.module';
+import { EmployeeComponent } from './modules/employee/employee.component';
+import { LoginComponent } from './modules/login/login.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent
+    
   ],
   imports: [
     BrowserModule,
