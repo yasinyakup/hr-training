@@ -14,7 +14,7 @@ export class EmployeeService {
   constructor(private httpClien: HttpClient) { }
 
   getEmpWithHour(): Observable<EmpWithHour[]> {
-    return this.httpClien.get<EmpWithHour[]>(this.baseURL+"empwithhour");
+    return this.httpClien.get<EmpWithHour[]>(this.baseURL+"trainings");
   }
 
   getEmployees(): Observable<Employee[]> {

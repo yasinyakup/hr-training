@@ -10,6 +10,9 @@ export class EmpWithHour {
     fullname!: string;
     dept!: string;
     title!: string;
-    trainingInfos!: TrainingInfo[];
+    trainingNo!: string;
+    trainingName!: string;
+    archiveNo!: string;
+    hour!: number;
     
 }

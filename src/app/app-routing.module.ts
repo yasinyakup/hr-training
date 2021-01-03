@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DefaultComponent } from './layouts/default/default.component';
+import { AddemployeeComponent } from './modules/addemployee/addemployee.component';
+import { AddtrainingComponent } from './modules/addtraining/addtraining.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { EmployeeComponent } from './modules/employee/employee.component';
 import { PostsComponent } from './modules/posts/posts.component';
@@ -26,6 +28,14 @@ const routes: Routes = [
       {
         path: 'employees',
         component: EmployeeComponent
+      },
+      {
+        path: 'addemployee',
+        component: AddemployeeComponent
+      },
+      {
+        path: 'addtraining',
+        component: AddtrainingComponent
       }
     ]
   }

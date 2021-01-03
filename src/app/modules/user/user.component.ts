@@ -14,24 +14,30 @@ export class UserComponent implements OnInit {
   
  dataSource!: MatTableDataSource<EmpWithHour>;
  users: EmpWithHour[] = [];
- displayedColumns: String[]=['id','empNo', 'fullname', 'dept', 'title', 'actions'];
+ displayedColumns: String[]=['id','empNo', 'fullName', 'trainingNo', 'trainingName', 'hour'];
  @ViewChild(MatSort, { static: true })  sort: MatSort = new MatSort;
  @ViewChild(MatPaginator, { static: true })
  paginator!: MatPaginator;
 
   constructor(private employeeService: EmployeeService) {
     this.getEmpWithHour();
+    
    }
 
   ngOnInit(): void {
    
-    this.dataSource = new MatTableDataSource(this.users);
-    console.log(this.users);
+    //this.dataSource = new MatTableDataSource(this.users);
+    //console.log(this.users);
   }
 
   getEmpWithHour(){
     this.employeeService.getEmpWithHour().subscribe(data => {
           this.users = data;
+          this.dataSource =  new MatTableDataSource(data);
+          console.log(this.dataSource);
+
+          this.dataSource.sort = this.sort;
+          this.dataSource.paginator = this.paginator;
     })
   }
 

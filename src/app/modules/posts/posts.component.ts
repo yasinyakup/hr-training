@@ -31,10 +31,10 @@ export class PostsComponent implements OnInit {
   constructor() { 
     this.users = [
       {
-        empNo: '99949270278',
-        fullname: 'Yasin Yakup',
+        empNo: '99123455',
+        fullname: 'melih yayla',
         dept: 'Bilgi İşlem',
-        title: 'Mes Mühendisi',
+        title: 'it',
         trainingName: 'MES Eğitimleri',
         archiveNo: 'CME301100802',
         hour: 2.5
@@ -56,11 +56,11 @@ export class PostsComponent implements OnInit {
         archiveNo: 'CME301100802',
         hour: 2.5
       },{
-        empNo: '99949270278',
-        fullname: 'Yasin Yakup',
+        empNo: '34349389',
+        fullname: 'bilal abdurahman',
         dept: 'Bilgi İşlem',
         title: 'Mes Mühendisi',
-        trainingName: 'MES Eğitimleri',
+        trainingName: 'it',
         archiveNo: 'CME301100802',
         hour: 2.5
       },{

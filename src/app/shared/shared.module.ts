@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ObserversModule } from '@angular/cdk/observers';
 import { EmployeeService } from './service/employee.service';
 import { MatTableModule } from '@angular/material/table';
+import { MatTreeModule } from '@angular/material/tree';
 
 
 
@@ -44,7 +45,8 @@ import { MatTableModule } from '@angular/material/table';
     HighchartsChartModule,
     HttpClientModule,
     ObserversModule,
-    MatTableModule
+    MatTableModule,
+    MatTreeModule
     
   ],
   exports:[

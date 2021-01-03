@@ -8,22 +8,28 @@
     </div>
     <mat-divider></mat-divider>
 
-    <h2 matSubheader>Pages</h2>
+    <h2 matSubheader>Reports</h2>
    
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/">Dashboard</a>
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/posts">Posts</a>
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/users">Users</a>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/">
+        <mat-icon>dashboard</mat-icon>
+        Dashboard</a>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/employees">
+        <mat-icon>people</mat-icon>
+        Employees</a>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/users">
+        <mat-icon>menu_book</mat-icon>
+        Trainings</a>
     <mat-divider></mat-divider>
     
-    <h2 matSubheader>Tools</h2>
+    <h2 matSubheader>Data Entry</h2>
    
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/employees">
-        <mat-icon>import_contacts</mat-icon>
-        Contacts
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/addemployee">
+        <mat-icon>person_add</mat-icon>
+        Add Employee
     </a>
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/leads">
-        <mat-icon>contact_phone</mat-icon>
-        Leads
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/addtraining">
+        <mat-icon>library_add</mat-icon>
+        Add Training
     </a>
 
 </mat-nav-list>

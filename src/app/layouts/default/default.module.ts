@@ -22,6 +22,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { UserComponent } from 'src/app/modules/user/user.component';
 import { EmployeeComponent } from 'src/app/modules/employee/employee.component';
+import { AddemployeeComponent } from 'src/app/modules/addemployee/addemployee.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddtrainingComponent } from 'src/app/modules/addtraining/addtraining.component';
+import { BrowserModule } from '@angular/platform-browser';
+
 
 
 @NgModule({
@@ -30,7 +38,9 @@ import { EmployeeComponent } from 'src/app/modules/employee/employee.component';
     DashboardComponent,
     PostsComponent,
     UserComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    AddemployeeComponent,
+    AddtrainingComponent
   ],
   imports: [
   CommonModule,
@@ -47,7 +57,13 @@ import { EmployeeComponent } from 'src/app/modules/employee/employee.component';
   MatFormFieldModule,
   MatIconModule,
   MatButtonModule,
-  MatMenuModule
+  MatMenuModule,
+  MatSelectModule,
+  MatOptionModule,
+  MatToolbarModule,
+  ReactiveFormsModule,
+  BrowserModule,
+  FormsModule
 
   ],
   providers:[
