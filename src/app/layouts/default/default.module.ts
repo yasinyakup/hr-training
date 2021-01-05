@@ -24,11 +24,14 @@ import { UserComponent } from 'src/app/modules/user/user.component';
 import { EmployeeComponent } from 'src/app/modules/employee/employee.component';
 import { AddemployeeComponent } from 'src/app/modules/addemployee/addemployee.component';
 import { MatSelectModule } from '@angular/material/select';
-import { MatOptionModule } from '@angular/material/core';
+import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddtrainingComponent } from 'src/app/modules/addtraining/addtraining.component';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 
 
@@ -63,9 +66,16 @@ import { BrowserModule } from '@angular/platform-browser';
   MatToolbarModule,
   ReactiveFormsModule,
   BrowserModule,
-  FormsModule
+  FormsModule,
+  MatRadioModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatAutocompleteModule
+  
 
   ],
+  exports: [ MatFormFieldModule, MatInputModule ],
+  
   providers:[
     DashboardService
   ]

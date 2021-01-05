@@ -11,17 +11,25 @@ export class EmployeeService {
 
   private baseURL= "http://localhost:8080/logictest/";
 
-  constructor(private httpClien: HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
   getEmpWithHour(): Observable<EmpWithHour[]> {
-    return this.httpClien.get<EmpWithHour[]>(this.baseURL+"trainings");
+    return this.httpClient.get<EmpWithHour[]>(this.baseURL+"trainings");
   }
 
   getEmployees(): Observable<Employee[]> {
-    return this.httpClien.get<Employee[]>(this.baseURL+"employees");
+    return this.httpClient.get<Employee[]>(this.baseURL+"employees");
   }
 
-  getEmployee(): Observable<Employee> {
-    return this.httpClien.get<Employee>(this.baseURL+"employees/1000");
+  getEmployee(empNo: string): Observable<Employee> {
+    return this.httpClient.get<Employee>(this.baseURL+"employees/"+empNo);
   }
+
+  sendPostEmp(data: any): Observable<any> {
+    return this.httpClient.post<any>(this.baseURL+"employee", data);
+}
+getEmployeeByDeptId(deptId: number): Observable<any> {
+  return this.httpClient.get<any>(this.baseURL+"employees/dept/"+deptId);
+}
+
 }

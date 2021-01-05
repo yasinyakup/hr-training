@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators, ControlContainer } from '@angular/forms';
+import { BasicService } from 'src/app/shared/service/basic.service';
+import { EmployeeService } from 'src/app/shared/service/employee.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -9,48 +12,84 @@ import { FormBuilder, FormGroup, FormControl, Validators, ControlContainer } fro
 })
 export class AddemployeeComponent implements OnInit {
 
- formGroup!: FormGroup;
+  formGroup!: FormGroup;
   titleAlert: string = 'This field is required';
   post: any = '';
+  depts: any[] = ['Bilgi işlem', 'Satın alma', 'Modül Hattı işletme', 'Cell hattı işletme'];
+  titles: any[] = ['Mühendis', 'Operatör', 'Şef', 'Müdür'];
+  genders: any = ['Erkek', 'Bayan', 'Bilinmiyor'];
+  date = new FormControl(new Date());
+  constructor(private formBuilder: FormBuilder, private basicService: BasicService, private employeeService: EmployeeService) {
 
-  constructor(private formBuilder: FormBuilder) {
+   
     
    }
 
   ngOnInit() {
     this.createForm();
-    this.setChangeValidate()
+    this.setChangeValidate();
+    this.getDeptData();
+    this.getTitleData();
   }
 
   createForm() {
     let emailregex: RegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     this.formGroup = this.formBuilder.group({
-      'empCode': [null, [Validators.required, Validators.maxLength(11)]],
+      'empNo': [null, [Validators.required, Validators.maxLength(11), this.checkEmp]],
       'email': [null, [Validators.required, Validators.pattern(emailregex)]],
-      'name': [null, Validators.required],
-      'password': [null, [Validators.required, this.checkPassword]],
-      'description': [null, [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
+      'fullName': [null, Validators.required],
+      'hireDate': [null, Validators.required],
+      'dob': [null, Validators.required],
+      'dept': [null, Validators.required],
+      'title': [null, Validators.required],
+      'gender': [null, Validators.required],
+     // 'password': [null, [Validators.required, this.checkPassword]],
+     // 'description': [null, [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
       'validate': ''
     });
   }
+
+
+  getDeptData() {
+    this.basicService.getDept().subscribe(data=>{
+     this.depts = data
+     console.log(this.depts);
+    }
+      )
+  }
+
+  saveEmployee(data: any){
+    this.employeeService.sendPostEmp(data).subscribe(data=>
+      console.log(data)
+      );
+  }
+
+  getTitleData() {
+    this.basicService.getTitle().subscribe(data=>{
+     this.titles = data
+     console.log(this.titles);
+    }
+      )
+  }
+  
   
 
   setChangeValidate() {
     this.formGroup.get('validate')!.valueChanges.subscribe(
       (validate) => {
         if (validate == '1') {
-          this.formGroup.get('name')!.setValidators([Validators.required, Validators.minLength(3)]);
+          this.formGroup.get('fullName')!.setValidators([Validators.required, Validators.minLength(3)]);
           this.titleAlert = "You need to specify at least 3 characters";
         } else {
-          this.formGroup.get('name')!.setValidators(Validators.required);
+          this.formGroup.get('fullName')!.setValidators(Validators.required);
         }
-        this.formGroup.get('name')!.updateValueAndValidity();
+        this.formGroup.get('fullName')!.updateValueAndValidity();
       }
     )
   }
 
   get name() {
-    return this.formGroup.get('name') as FormControl
+    return this.formGroup.get('fullName') as FormControl
   }
 
   checkPassword(control: { value: any; }) {
@@ -59,6 +98,11 @@ export class AddemployeeComponent implements OnInit {
     return (!passwordCheck.test(enteredPassword) && enteredPassword) ? { 'requirements': true } : null;
   }
 
+  checkEmp(control: { value: any;} ){
+    let enteredEmp = control.value;
+    let empCheck = /^(?=.*[0-9])/;
+    return (!empCheck.test(enteredEmp) && enteredEmp) ? { 'requirements': true } : null;
+  }
   /*
   checkInUseEmail(control: { value: string; }) {
     // mimic http database access
@@ -85,12 +129,26 @@ export class AddemployeeComponent implements OnInit {
   }
 
   getErrorEmpCode() {
-    return this.formGroup.get('empCode')!.hasError('required') ? 'Field is required (Max 11 charecters)' :
-      this.formGroup.get('empCode')!.hasError('maxLength') ? '' : 'max 11 charachters';
+    return this.formGroup.get('empNo')!.hasError('required') ? 'Field is required (Max 11 charecters)' :
+      this.formGroup.get('empNo')!.hasError('maxLength') ? 'max 11 charachters':
+      this.formGroup.get('empNo')!.hasError('requirements') ? 'EMP code must not include letter/special charechter' : '';
   }
 
   onSubmit(post: any) {
+    //console.log(this.formGroup.value);
+    this.saveEmployee(this.formGroup.value);
+    this.succesALert();
     this.post = post;
+    
+  }
+
+
+  succesALert(){
+    Swal.fire(
+      'Success!',
+      'Employee saved successfully!',
+      'success'
+    )
   }
 
 }

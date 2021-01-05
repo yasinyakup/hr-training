@@ -4,32 +4,124 @@
   <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form">
 
     <mat-form-field class="form-element">
-      <input matInput placeholder="Emp code" formControlName="empCode">
-      <mat-error *ngIf="!formGroup.controls['empCode'].valid && formGroup.controls['empCode'].touched">
+      <input matInput placeholder="Emp code" formControlName="empNo">
+      <mat-error *ngIf="!formGroup.controls['empNo'].valid && formGroup.controls['empNo'].touched">
         {{ getErrorEmpCode() }}
       </mat-error>
     </mat-form-field>
     <mat-form-field class="form-element">
-      <input matInput placeholder="Emailaddress" formControlName="email">
+      <input matInput placeholder="Email address" formControlName="email">
       <mat-error *ngIf="!formGroup.controls['email'].valid && formGroup.controls['email'].touched">
         {{ getErrorEmail() }}
       </mat-error>
     </mat-form-field>
     
     <mat-form-field class="form-element">
-      <input matInput placeholder="Name" formControlName="name">
+      <input matInput placeholder="Full name" formControlName="fullName">
       <mat-error *ngIf="!name.valid && name.touched">
         {{ titleAlert }}
       </mat-error>
     </mat-form-field>
-
+<!--
     <mat-form-field class="form-element">
-      <textarea matInput placeholder="Description"  matAutosizeMinRows="2" matAutosizeMaxRows="5" formControlName="description"></textarea>
-      <mat-error *ngIf="!formGroup.controls['description'].valid && formGroup.controls['description'].touched">
-        Required field, must be between 5 and 10 characters.
+      <mat-radio-group aria-label="Select an option" formControlName="gender">
+        <mat-radio-button value="female">Female</mat-radio-button>
+        <mat-radio-button value="male">Male</mat-radio-button>
+        <mat-radio-button value="hidden">Hidden</mat-radio-button>
+      </mat-radio-group>
+      <mat-error *ngIf="!formGroup.controls['gender'].valid && formGroup.controls['gender'].touched">
+          Required field, must be between 5 and 10 characters.
+        </mat-error>
+    </mat-form-field>
+
+    -->
+
+
+    <mat-form-field class="form-element" appearance="fill">
+      <mat-label>Gender</mat-label>
+      <mat-select formControlName="gender">
+        <mat-option *ngFor="let gender of genders" [value]="gender">
+          {{gender}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="!formGroup.controls['gender'].valid && formGroup.controls['gender'].touched">
+        Required field.
       </mat-error>
     </mat-form-field>
 
+
+    <mat-form-field  class="form-element" appearance="fill">
+      <mat-label>Hire date</mat-label>
+      <input matInput [matDatepicker]="picker1" formControlName="hireDate">
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+      <mat-error *ngIf="!formGroup.controls['hireDate'].valid && formGroup.controls['hireDate'].touched">
+        Required field.
+      </mat-error>
+    </mat-form-field>
+    
+    <mat-form-field class="form-element" appearance="fill">
+      <mat-label>Date of birth</mat-label>
+      <input matInput [matDatepicker]="picker2" formControlName="dob">
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2 color="primary"></mat-datepicker>
+      <mat-error *ngIf="!formGroup.controls['dob'].valid && formGroup.controls['dob'].touched">
+        Required field.
+      </mat-error>
+    </mat-form-field>
+
+
+<!--
+    <mat-form-field class="form-element" appearance="fill">
+      <mat-label>Hire date</mat-label>
+      <input matInput [matDatepicker]="picker" [formControl]="date" formControlName="hiredate">
+      <mat-datepicker-toggle matSuffix [for]="picker">
+        <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+      </mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="!formGroup.controls['hiredate'].valid && formGroup.controls['hiredate'].touched">
+        Required field.
+      </mat-error>
+    </mat-form-field>
+
+    
+    <mat-form-field class="form-element" appearance="fill">
+      <mat-label>Date of birth</mat-label>
+      <input matInput [matDatepicker]="picker2" formControlName="dob">
+      <mat-datepicker-toggle matSuffix [for]="picker2">
+        <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+      </mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="!formGroup.controls['dob'].valid && formGroup.controls['dob'].touched">
+        Required field.
+      </mat-error>
+    </mat-form-field>
+    -->
+
+    <mat-form-field class="form-element" appearance="fill">
+      <mat-label>Department</mat-label>
+      <mat-select formControlName="dept">
+        <mat-option *ngFor="let dept of depts" [value]="dept">
+          {{dept.deptName}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="!formGroup.controls['dept'].valid && formGroup.controls['dept'].touched">
+        Required field.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-element" appearance="fill">
+      <mat-label>Title</mat-label>
+      <mat-select formControlName="title">
+        <mat-option *ngFor="let title of titles" [value]="title">
+          {{title.title}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="!formGroup.controls['title'].valid && formGroup.controls['title'].touched">
+        Required field.
+      </mat-error>
+    </mat-form-field>
+<!--
     <mat-form-field class="form-element">
       <input matInput placeholder="Password" formControlName="password">
       <mat-hint>Choose a password of at least eight characters, one uppercase letter and one number</mat-hint>
@@ -37,10 +129,10 @@
         {{ getErrorPassword() }}
       </mat-error>
     </mat-form-field>
-
+-->
 
     <div class="form-element">
-      <button mat-raised-button color="#37447a" type="submit" class="button" [disabled]="!formGroup.valid">Submit Form</button>
+      <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!formGroup.valid">Submit Form</button>
     </div>
 
   </form>

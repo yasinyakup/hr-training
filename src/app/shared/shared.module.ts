@@ -20,6 +20,7 @@ import { ObserversModule } from '@angular/cdk/observers';
 import { EmployeeService } from './service/employee.service';
 import { MatTableModule } from '@angular/material/table';
 import { MatTreeModule } from '@angular/material/tree';
+import { BasicService } from './service/basic.service';
 
 
 
@@ -58,7 +59,8 @@ import { MatTreeModule } from '@angular/material/tree';
     PieComponent
   ],
   providers:[
-    EmployeeService
+    EmployeeService,
+    BasicService
   ]
 })
 export class SharedModule { }

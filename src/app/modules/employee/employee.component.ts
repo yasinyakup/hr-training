@@ -44,7 +44,7 @@ export class EmployeeComponent implements OnInit {
  }
 
  getEmployee(){
-  this.employeeService.getEmployee().subscribe(data=>{
+  this.employeeService.getEmployee("1000").subscribe(data=>{
     this.employee = data;
     console.log(this.employee);
   },
