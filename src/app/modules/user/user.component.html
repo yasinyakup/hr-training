@@ -20,6 +20,14 @@
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
             <td mat-cell *matCellDef="let row">{{ row.fullName }}</td>
         </ng-container>
+        <ng-container  matColumnDef="dept">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Department</th>
+            <td mat-cell *matCellDef="let row">{{ row.dept }}</td>
+        </ng-container>
+        <ng-container  matColumnDef="title">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
+            <td mat-cell *matCellDef="let row">{{ row.title }}</td>
+        </ng-container>
         <ng-container  matColumnDef="trainingNo">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Training No</th>
             <td mat-cell *matCellDef="let row">{{ row.trainingNo }}</td>
@@ -32,8 +40,6 @@
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Training Hours</th>
             <td mat-cell *matCellDef="let row">{{ row.hour }}</td>
         </ng-container>
-       
-       
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

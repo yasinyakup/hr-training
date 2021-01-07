@@ -19,9 +19,12 @@ export class AddtrainingComponent implements OnInit {
   formGroup!: FormGroup;
   depts: any = ['Bilgi işlem', 'Satın alma', 'Modül Hattı işletme', 'Cell hattı işletme'];
   tns: any = ['MES Cell', 'MES Module', 'MES Wafer', 'MES Ingot'];
+  sections: any = ['Process', 'Machinery', 'MES', 'Bilinmiyor'];
 
   dataSource!: MatTableDataSource<any>;
   empNo!: string;
+  empAlreadyExist = true;
+
 
   tData: any[] = [];
   dataSourceByDept: MatTableDataSource<Employee> = new MatTableDataSource(this.tData);
@@ -57,7 +60,10 @@ export class AddtrainingComponent implements OnInit {
     let emailregex: RegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     this.formGroup = this.formBuilder.group({
       'tn': [null, Validators.required],
-      'td': [null, Validators.required]
+      'td': [null, Validators.required],
+      'section': [null, Validators.required],
+      'hour': [null, Validators.required],
+     // 'emp': ''
     });
   }
 
@@ -132,11 +138,15 @@ applyFilter(event: any){
     this.empNo = this.empNo.substring(this.empNo.trim().indexOf(", ")+2);
     
     this.employeeService.getEmployee(this.empNo).subscribe(data=>{
+      if(this.tData.includes(data)){
+        this.empAlreadyExist = true;
+      }else{
       this.tData.push(data);
       this.dataSourceByDept._updateChangeSubscription();
-    }
+    }}
       );
-      
+      console.log(this.empAlreadyExist);
+      this.myControl.setValue('');
    
    console.log(this.tData); 
   }

@@ -14,7 +14,7 @@ export class UserComponent implements OnInit {
   
  dataSource!: MatTableDataSource<EmpWithHour>;
  users: EmpWithHour[] = [];
- displayedColumns: String[]=['id','empNo', 'fullName', 'trainingNo', 'trainingName', 'hour'];
+ displayedColumns: String[]=['id','empNo', 'fullName', 'dept','title', 'trainingNo', 'trainingName', 'hour'];
  @ViewChild(MatSort, { static: true })  sort: MatSort = new MatSort;
  @ViewChild(MatPaginator, { static: true })
  paginator!: MatPaginator;

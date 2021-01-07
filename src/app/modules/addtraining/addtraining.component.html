@@ -28,6 +28,27 @@
   </div>
 
 
+  <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+    <mat-form-field fxFlex="50" class="form-element" appearance="fill">
+    <mat-label>Enter section <span class="star">*</span></mat-label>
+    <mat-select formControlName="section">
+      <mat-option *ngFor="let section of sections" [value]="section">
+        {{section}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="!formGroup.controls['section'].valid && formGroup.controls['tn'].touched">
+      Required field.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field fxFlex="50" class="form-element">
+    <input matInput placeholder="Enter training duration *" formControlName="hour">
+    <mat-error *ngIf="!formGroup.controls['section'].valid && formGroup.controls['tn'].touched">
+      Required field.
+    </mat-error>
+  </mat-form-field>
+</div>
+
   
   <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
 
@@ -42,11 +63,16 @@
 
     <mat-form-field fxFlex="50" class="form-element">
       <input matInput placeholder="Enter EMP Code/Name" (keyup)="applyFilter($event)"
-      [formControl]="myControl"
+      [formControl]="myControl" formControlName="emp"
              [matAutocomplete]="auto">
              <button mat-icon-button matSuffix *ngIf="myControl.value" type="button" (click)="addEmp()" >
               <mat-icon class="mat-icon-add">add</mat-icon>
               </button>
+<!--
+              <mat-error *ngIf="!formGroup.controls['emp'].valid">
+        Required field.
+      </mat-error>
+-->
 
       <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
         <mat-option *ngFor="let option of options" [id]="option.empNo" [value]="option.fullName+ ', ' +option.empNo">
